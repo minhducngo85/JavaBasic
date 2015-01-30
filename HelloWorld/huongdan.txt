@@ -1,0 +1,30 @@
+﻿Java Tutorial 1: Hello World
+Video này hướng dẫn các bạn cài đặt Java và tạo project đầu tiên "HelloWorld"
+
+Các bước
+
+1) Cài đặt JDK
+1.1) tải JDK về máy tính : http://www.oracle.com/technetwork/articles/javase/index-jsp-138363.html
+  Mình sử dụng phien bản: 8.31
+1.2) Cài đặt JDK: chạy file vừa tài về máy tính và chon next để hoàn thành cài đặt
+1.3) Setting up the system variables (Umgebungsvariablen): Cài đặt biến môi trường
+  - tạo biến môi trường JAVA_HOME=C:\Program Files\Java\jdk1.8.0_31 (Dduwowngf dẫn đến thư mục cài đặt JDK)
+  - tạo biến CLASSPATH=%JAVA_HOME%\lib 
+  - thêm "%JAVA_HOME%\bin" vào biến "path"
+1.4) Kiểm tra quá trình cài đặt
+  - open Windows command line
+  - enter java -version -> nhin thay: java version "1.8.0_31"
+  - enter javac -version -> xuất hiện: javac 1.8.0_31
+  -> cài đặt thành công
+  
+2) Cài đặt Eclipse
+- download from https://www.eclipse.org/downloads/
+- Mình sử dụng bản "Eclipse IDE for Java EE Developers" 
+- sau khi tải về, giải nén và chạy file eclipse.exe
+- chọn đường dẫn để lưu trữ các Java Projects ví dụ: C:\Users\Vampir\workspaces\JavaBasic
+
+3) Tạo project đầu tiên "HelloWorld"
+- tạo mới project "HelloWorld"
+- tạo class "HelloWorld"
+- tạo hàm main(String[] args)
+- chay file vua tao
