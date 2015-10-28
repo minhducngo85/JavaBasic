@@ -1,0 +1,22 @@
+Keytool:
+
+1) keytool -genkey -alias mkyong -keyalg RSA -keystore c:\keystore\mkyongkeystore
+enter keystore password: password
+reenter keystore password: password
+..............
+Enter key password for <mkyong>
+        (RETURN if same as keystore password):
+enter
+
+2) to list certificates:
+
+keytool -list -keystore c:\keystore\mkyongkeystore
+
+enter keysotr password: password
+
+3) to avoid: SunCertPathBuilderException link http://www.mkyong.com/webservices/jax-ws/suncertpathbuilderexception-unable-to-find-valid-certification-path-to-requested-target/
+
+- download InstallCert.java 
+- run: C:\Users\mngo.RIMNET\Desktop\JAX-WS\InstallCert-bin>java InstallCert localhost:84431
+- enter 1
+- copy the generated “jssecacerts” file to your “$JAVA_HOME\jre\lib\security” folder.
