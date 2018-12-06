@@ -23,6 +23,10 @@ public class MyOuterClass {
         this.id = id;
     }
 
+    public void printNameAge(String name, int age) {
+        System.out.println(name + " is " + age + " year(s) old.");
+    }
+
     public static class StaticInnerClass {
         public final static int STATIC_FIELD_1 = 1;
         public final static int STATIC_FIELD_2 = 2;

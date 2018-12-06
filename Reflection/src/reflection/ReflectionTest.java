@@ -1,12 +1,33 @@
-npackage reflection;
+package reflection;
 
 import java.lang.reflect.Constructor;
 import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
 
 public class ReflectionTest {
+
+    /**
+     * main method
+     * 
+     * @param args
+     * @throws NoSuchFieldException
+     * @throws SecurityException
+     * @throws IllegalArgumentException
+     * @throws IllegalAccessException
+     * @throws InstantiationException
+     * @throws ClassNotFoundException
+     * @throws NoSuchMethodException
+     * @throws InvocationTargetException
+     */
     public static void main(String[] args) throws NoSuchFieldException, SecurityException, IllegalArgumentException, IllegalAccessException,
             InstantiationException, ClassNotFoundException, NoSuchMethodException, InvocationTargetException {
+        getStaticAndNoneStaticFields();
+        invokeMethod();
+    }
+
+    public static void getStaticAndNoneStaticFields() throws ClassNotFoundException, InstantiationException, IllegalAccessException, NoSuchFieldException,
+            SecurityException, NoSuchMethodException, IllegalArgumentException, InvocationTargetException {
         // object fields
         System.out.println("--- Field of Class---");
         Class<?> class_ = Class.forName("reflection.MyOuterClass");
@@ -57,5 +78,30 @@ public class ReflectionTest {
         Object fType1 = field4.getType();
         Object fValue1 = field4.get(outerInstance);
         System.out.println("Class member, name: " + fName1 + ", type: " + fType1 + ", value: " + fValue1);
+    }
+
+    public static void invokeMethod() throws ClassNotFoundException, InstantiationException, IllegalAccessException, NoSuchMethodException, SecurityException,
+            IllegalArgumentException, InvocationTargetException {
+        System.out.println("Invoke method using reflection");
+        String className = "reflection.MyOuterClass";
+        Class<?> _class = Class.forName(className); // convert string classname to class
+        Object obj = _class.newInstance();
+
+        // calling set id method
+        String methodName = "setId";
+        Method setIdMethod = obj.getClass().getMethod(methodName, int.class);
+        setIdMethod.invoke(obj, 5);
+
+        // without parameters, return string
+        methodName = "getId";
+        Method getNameMethod = obj.getClass().getMethod(methodName);
+        int id = (int) getNameMethod.invoke(obj); // explicit cast
+        System.out.println(id);
+
+        // with multiple parameters
+        methodName = "printNameAge";
+        Class<?>[] paramTypes = { String.class, int.class };
+        Method printMethod = obj.getClass().getMethod(methodName, paramTypes);
+        printMethod.invoke(obj, "Hello", 5);
     }
 }
