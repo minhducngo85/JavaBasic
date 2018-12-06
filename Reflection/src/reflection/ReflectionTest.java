@@ -52,10 +52,10 @@ public class ReflectionTest {
         Object innerInstance = ctor.newInstance(outerInstance);
 
         // one static field: e.g static field name HONK
-        Field fieldHonk1 = innerInstance.getClass().getField("STATIC_FIELD_4");
-        String fName1 = fieldHonk1.getName();
-        Object fType1 = fieldHonk1.getType();
-        Object fValue1 = fieldHonk1.get(outerInstance);
+        Field field4 = innerInstance.getClass().getField("STATIC_FIELD_4");
+        String fName1 = field4.getName();
+        Object fType1 = field4.getType();
+        Object fValue1 = field4.get(outerInstance);
         System.out.println("Class member, name: " + fName1 + ", type: " + fType1 + ", value: " + fValue1);
     }
 }
