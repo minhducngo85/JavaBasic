@@ -35,11 +35,11 @@ public class ReflectionTest {
             System.out.println("Class member, name: " + fName + ", type: " + fType + ", value: " + fValue);
         }
 
-        // one static field: e.g static field name HONK
-        Field fieldHonk = object.getClass().getField("STATIC_FIELD_1");
-        String fName = fieldHonk.getName();
-        Object fType = fieldHonk.getType();
-        Object fValue = fieldHonk.get(object);
+        // one static field: e.g static field name STATIC_FIELD_1
+        Field field1 = object.getClass().getField("STATIC_FIELD_1");
+        String fName = field1.getName();
+        Object fType = field1.getType();
+        Object fValue = field1.get(object);
         System.out.println("Class member, name: " + fName + ", type: " + fType + ", value: " + fValue);
 
         // inner class is not static
@@ -51,7 +51,7 @@ public class ReflectionTest {
         Constructor<?> ctor = innerClass.getDeclaredConstructor(outerClass);
         Object innerInstance = ctor.newInstance(outerInstance);
 
-        // one static field: e.g static field name HONK
+        // one static field: e.g static field name STATIC_FIELD_4
         Field field4 = innerInstance.getClass().getField("STATIC_FIELD_4");
         String fName1 = field4.getName();
         Object fType1 = field4.getType();
